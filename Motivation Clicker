@@ -1,0 +1,95 @@
+const int buttonPin = 8;
+int counter = 0;
+
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27, 16, 2); 
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);
+  lcd.init();
+  lcd.clear();
+  lcd.backlight();      // Make sure backlight is on
+  
+  lcd.setCursor(2, 0);  //Set cursor to character 2 on line 0
+  lcd.print("Clicks:");
+  lcd.setCursor(2, 1);  //Move cursor to character 2 on line 1
+  lcd.print(counter);
+}
+
+void loop() {
+  int buttonState;
+  buttonState = digitalRead(buttonPin);
+
+  if (buttonState == LOW) {
+    counter++;
+    lcd.clear();
+    lcd.setCursor(2, 0);  //Set cursor to character 2 on line 0
+    lcd.print("Clicks:");
+    
+    lcd.setCursor(2, 1);  //Move cursor to character 2 on line 1
+    lcd.print(counter);
+    delay(150);
+  }
+
+  if (counter == 10) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Common");
+    delay(300);
+  }
+  else if (counter == 20) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Rare");
+    delay(300);
+  }
+  else if (counter == 50) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Super Rare");
+    delay(300);
+  }
+  else if (counter == 75) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Epic");
+    delay(300);
+  }
+  else if (counter == 100) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Mythic");
+    delay(300);
+  }
+  else if (counter == 250) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Chromatic");
+    delay(300);
+  }
+  else if (counter == 500) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Legendary");
+    delay(300);
+  }
+  else if (counter == 1000) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Masters");
+    delay(300);
+  }
+  else if (counter == 5000) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("Insane");
+    delay(300);
+  }
+  else if (counter == 10000) {
+    lcd.clear();
+    lcd.setCursor(2,0);
+    lcd.print("God Mode");
+    delay(300);
+  }
+}
